@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --n1:#7b2ff7;
+  --n2:#c471ed;
+  --n3:#00f5ff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:#05010a;
+  position:relative;
+}
+
+/* Pencil sketch neon texture */
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    radial-gradient(circle at 20% 20%, rgba(123,47,247,0.25), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(196,113,237,0.20), transparent 45%);
+  opacity:0.8;
+  pointer-events:none;
+}
+
+/* Neon floating glow */
+body::after{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(0,245,255,0.15), transparent 60%);
+  filter:blur(60px);
+  top:-200px;
+  left:-200px;
+  animation:floatGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow{
+  0%{transform:translateY(0) scale(1);}
+  100%{transform:translateY(50px) scale(1.15);}
+}
+
+.container{
+  position:relative;
+  width:400px;
+  padding:40px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 0 25px rgba(123,47,247,0.25),
+    inset 0 0 10px rgba(255,255,255,0.05);
+  overflow:hidden;
+  transition:.3s ease;
+}
+
+/* Neon border energy */
+.container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  padding:2px;
+  background:linear-gradient(135deg,var(--n1),var(--n2),var(--n3),var(--n1));
+  background-size:300% 300%;
+  animation:borderMove 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+}
+
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.container:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:
+    0 0 45px rgba(123,47,247,0.4),
+    0 0 80px rgba(0,245,255,0.15);
+}
+
+h2{
+  text-align:center;
+  color:#fff;
+  font-size:32px;
+  margin-bottom:25px;
+  letter-spacing:2px;
+  text-shadow:
+    0 0 10px var(--n1),
+    0 0 25px var(--n2);
+}
+
+p{
+  color:#d8b4fe;
+  font-size:14px;
+  margin-top:10px;
+}
+
+/* Inputs neon glass */
+input{
+  width:100%;
+  padding:15px;
+  margin-top:15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.04);
+  color:#fff;
+  outline:none;
+  transition:.25s ease;
+}
+
+/* neon sketch hover */
+input:hover{
+  border-color:var(--n2);
+  box-shadow:0 0 15px rgba(123,47,247,0.3);
+  transform:scale(1.02);
+}
+
+input:focus{
+  border-color:var(--n3);
+  box-shadow:
+    0 0 10px var(--n1),
+    0 0 25px var(--n2),
+    inset 0 0 10px rgba(0,245,255,0.15);
+  transform:scale(1.03);
+}
+
+input::placeholder{
+  color:rgba(255,255,255,0.5);
+}
+
+/* Neon button */
+button{
+  width:100%;
+  padding:15px;
+  margin-top:25px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+  color:#fff;
+  background:linear-gradient(135deg,var(--n1),var(--n2),var(--n3));
+  background-size:200% 200%;
+  animation:btnFlow 4s linear infinite;
+  box-shadow:0 0 20px rgba(123,47,247,0.3);
+  transition:.3s ease;
+}
+
+@keyframes btnFlow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+button:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:
+    0 0 30px rgba(123,47,247,0.5),
+    0 0 60px rgba(0,245,255,0.2);
+}
+
+button:active{
+  transform:scale(0.97);
+}
